@@ -13,6 +13,8 @@
 		660D10AC1F7C239600F8EE86 /* CommonAssemblies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D10A71F7C239600F8EE86 /* CommonAssemblies.swift */; };
 		660D10AD1F7C239600F8EE86 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D10A81F7C239600F8EE86 /* Application.swift */; };
 		660D10AE1F7C239600F8EE86 /* AssembliesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D10A91F7C239600F8EE86 /* AssembliesFactory.swift */; };
+		660D10B21F7C298B00F8EE86 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660D10B11F7C298B00F8EE86 /* Dip.framework */; };
+		660D10B41F7C2A0400F8EE86 /* DipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660D10B31F7C2A0300F8EE86 /* DipUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		660D10A71F7C239600F8EE86 /* CommonAssemblies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAssemblies.swift; sourceTree = "<group>"; };
 		660D10A81F7C239600F8EE86 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		660D10A91F7C239600F8EE86 /* AssembliesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembliesFactory.swift; sourceTree = "<group>"; };
+		660D10B11F7C298B00F8EE86 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
+		660D10B31F7C2A0300F8EE86 /* DipUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DipUI.framework; path = Carthage/Build/iOS/DipUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660D10B41F7C2A0400F8EE86 /* DipUI.framework in Frameworks */,
+				660D10B21F7C298B00F8EE86 /* Dip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +48,7 @@
 			children = (
 				660D109C1F7C237700F8EE86 /* DipApplication */,
 				660D109B1F7C237700F8EE86 /* Products */,
+				660D10B01F7C298B00F8EE86 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,15 @@
 			path = DipApplication;
 			sourceTree = "<group>";
 		};
+		660D10B01F7C298B00F8EE86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				660D10B31F7C2A0300F8EE86 /* DipUI.framework */,
+				660D10B11F7C298B00F8EE86 /* Dip.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -89,6 +105,7 @@
 				660D10961F7C237700F8EE86 /* Frameworks */,
 				660D10971F7C237700F8EE86 /* Headers */,
 				660D10981F7C237700F8EE86 /* Resources */,
+				660D10AF1F7C28A400F8EE86 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -141,6 +158,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		660D10AF1F7C28A400F8EE86 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DipUI.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Dip.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DipUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh ./Scripts/carthage.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		660D10951F7C237700F8EE86 /* Sources */ = {
@@ -281,6 +319,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DipApplication/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -304,6 +346,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DipApplication/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

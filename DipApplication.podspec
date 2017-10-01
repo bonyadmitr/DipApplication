@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-    s.name                  = 'KeyboardHideManager'
-    s.version               = '1.1.0'
-    s.summary               = 'Codeless manager to hide keyboard by tapping on views for iOS written in Swift.'
-    s.homepage              = 'https://github.com/bonyadmitr/KeyboardHideManager'
+    s.name                  = 'DipApplication'
+    s.version               = '1.0.0'
+    s.summary               = 'DI for Apllication in Swift'
+    s.homepage              = 'https://github.com/bonyadmitr/DipApplication'
     s.author                = { 'Bondar Yaroslav' => 'bonyadmitr@gmail.com' }
     s.license               = { :type => "MIT", :file => "LICENSE.md" }
     s.ios.deployment_target = '8.0'
-    s.source                = {:git => 'https://github.com/bonyadmitr/KeyboardHideManager.git', :tag => "#{s.version}" }
-    s.source_files          = 'KeyboardHideManager/*.swift'
+    s.source                = {:git => '#{s.homepage}.git', :tag => "#{s.version}" }
+    s.source_files          = 'DipApplication/*.swift'
 end

@@ -6,12 +6,24 @@
 //
 //
 
-import UIKit
+import Foundation
 
-public protocol AppDelegateHandler: UIApplicationDelegate {
-}
+#if os(iOS)
+public protocol AppDelegateHandler: UIApplicationDelegate {}
 
-public class AppDelegateProxy: NSObject, UIApplicationDelegate {
+extension AppDelegateProxy: UIApplicationDelegate {}
+    
+#endif
+
+#if os(macOS)
+import Cocoa
+    
+public protocol AppDelegateHandler: NSApplicationDelegate {}
+
+extension AppDelegateProxy: NSApplicationDelegate {}
+#endif
+
+public class AppDelegateProxy: NSObject {
     
     public var handlers: [AppDelegateHandler] = []
     
@@ -28,7 +40,11 @@ public class AppDelegateProxy: NSObject, UIApplicationDelegate {
     }
     
     private func shouldForward(selector aSelector: Selector) -> Bool {
+        #if os(iOS)
         let fromAppDelegate = isSelector(aSelector, fromProtocol: UIApplicationDelegate.self)
+        #elseif os(macOS)
+        let fromAppDelegate = isSelector(aSelector, fromProtocol: NSApplicationDelegate.self)
+        #endif
         let fromNsObject = isSelector(aSelector, fromProtocol: NSObjectProtocol.self)
         return fromAppDelegate && !fromNsObject
     }
@@ -44,3 +60,5 @@ public class AppDelegateProxy: NSObject, UIApplicationDelegate {
         }
     }
 }
+
+
